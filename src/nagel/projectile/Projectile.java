@@ -13,10 +13,12 @@ public class Projectile {
     private double time;
 
         //given Projectile with angle and velocity
-    public Projectile(double angleInDegrees, double VELOCITY) {
+    public Projectile(double angleInDegrees, double velocity) {
         this.ANGLE = Math.toRadians(angleInDegrees);
-        this.VELOCITY = VELOCITY;
+        this.VELOCITY = velocity;
     }
+
+    public double getTime() { return time; }
 
     public void increaseTime(double delta) {
         this.time += delta;
