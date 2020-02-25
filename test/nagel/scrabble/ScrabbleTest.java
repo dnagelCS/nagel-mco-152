@@ -10,7 +10,7 @@ public class ScrabbleTest {
     public void isWord() throws FileNotFoundException {
         //given
         Scrabble scrabble = new Scrabble();
-        scrabble.readFile("C://Users//Devora//IdeaProjects//Nagel-MCO152//src//nagel//scrabble//dictionary.txt");
+        scrabble.readFile("src//nagel//scrabble//dictionary.txt");
 
         //when
         boolean exist = scrabble.isWord("AH");
@@ -23,7 +23,7 @@ public class ScrabbleTest {
     public void isNotWord() throws FileNotFoundException {
         //given
         Scrabble scrabble = new Scrabble();
-        scrabble.readFile("C://Users//Devora//IdeaProjects//Nagel-MCO152//src//nagel//scrabble//dictionary.txt");
+        scrabble.readFile("src//nagel//scrabble//dictionary.txt");
 
         //when
         boolean exist = scrabble.isWord("devora");
@@ -35,7 +35,7 @@ public class ScrabbleTest {
     @Test
     public void ignoreCase() throws FileNotFoundException {
         Scrabble scrabble = new Scrabble();
-        scrabble.readFile("C://Users//Devora//IdeaProjects//Nagel-MCO152//src//nagel//scrabble//dictionary.txt");
+        scrabble.readFile("src//nagel//scrabble//dictionary.txt");
 
         boolean exist = scrabble.isWord("ah");
         assertEquals(true, exist);
