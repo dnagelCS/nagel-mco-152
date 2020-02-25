@@ -1,4 +1,4 @@
-package Cashier;
+package nagel.cashier;
 
 public class Cash {
     public static final double PENNIES = 0.01;
@@ -12,9 +12,7 @@ public class Cash {
 
     private int pennyAmt, nickelAmt, dimeAmt, quarterAmt, onesAmt, fivesAmt, tensAmt, twentiesAmt;
 
-    public Cash() {
-        this(0, 0, 0, 0, 0, 0, 0, 0);
-    }
+    public Cash() {}
 
     public Cash(int pennyAmt, int nickelAmt, int dimeAmt, int quarterAmt, int ones, int fives, int tens, int twenties) {
         this.pennyAmt = pennyAmt;

@@ -1,23 +1,23 @@
-package Cashier;
+package nagel.cashier;
 
 import java.lang.Math;
 
 public class Cashier {
     Cash cashRegister = new Cash();
 
-    public Cash pay(double price, Cash customerPay) {
+    public Cash pay(double price, Cash customerPay) throws NotEnoughChangeException {
         final double ZERO = 0.00;
 
         //update register with customer payment
         updateRegister(customerPay);
 
-        double totalCash = customerPay.totalCash();
+        double totalCash = cashRegister.totalCash();
         
         Cash change = new Cash();
         double moneyOwed = 0;
 
         if (customerPay.totalCash() > price) {
-            moneyOwed = totalCash - price;
+            moneyOwed = customerPay.totalCash() - price;
             moneyOwed = Math.round(moneyOwed * 100.0) / 100.0;
         }
 
