@@ -42,7 +42,12 @@ public class Cash {
         this.pennyAmt += pennyAmt;
     }
 
+    public void subPennies(int pennyAmt) {
+        this.pennyAmt -= pennyAmt;
+    }
+
     public void setNickelAmt(int nickelAmt) {
+
         this.nickelAmt = nickelAmt;
     }
 
@@ -52,6 +57,10 @@ public class Cash {
 
     public void addNickels(int nickelAmt) {
         this.nickelAmt += nickelAmt;
+    }
+
+    public void subNickels(int nickelAmt) {
+        this.nickelAmt -= nickelAmt;
     }
 
     public void setDimeAmt(int dimeAmt) {
@@ -66,7 +75,12 @@ public class Cash {
         this.dimeAmt += dimeAmt;
     }
 
+    public void subDimes(int dimeAmt) {
+        this.dimeAmt -= dimeAmt;
+    }
+
     public void setQuarterAmt(int quarterAmt) {
+
         this.quarterAmt = quarterAmt;
     }
 
@@ -76,6 +90,10 @@ public class Cash {
 
     public void addQuarters(int quarterAmt) {
         this.quarterAmt += quarterAmt;
+    }
+
+    public void subQuarters(int quarterAmt) {
+        this.quarterAmt -= quarterAmt;
     }
 
     public void setOnesAmt(int onesAmt) {
@@ -90,7 +108,12 @@ public class Cash {
         this.onesAmt += onesAmt;
     }
 
+    public void subOnes(int onesAmt) {
+        this.onesAmt -= onesAmt;
+    }
+
     public void setFivesAmt(int fivesAmt) {
+
         this.fivesAmt = fivesAmt;
     }
 
@@ -100,6 +123,10 @@ public class Cash {
 
     public void addFives(int fivesAmt) {
         this.fivesAmt += fivesAmt;
+    }
+
+    public void subFives(int fivesAmt) {
+        this.fivesAmt -= fivesAmt;
     }
 
     public void setTensAmt(int tensAmt) {
@@ -114,6 +141,10 @@ public class Cash {
         this.tensAmt += tensAmt;
     }
 
+    public void subTens(int tensAmt) {
+        this.tensAmt -= tensAmt;
+    }
+
     public void setTwentiesAmt(int twentiesAmt) {
         this.twentiesAmt = twentiesAmt;
     }
@@ -124,5 +155,9 @@ public class Cash {
 
     public void addTwenties(int twentiesAmt) {
         this.twentiesAmt += twentiesAmt;
+    }
+
+    public void subTwenties(int twentiesAmt) {
+        this.twentiesAmt -= twentiesAmt;
     }
 }

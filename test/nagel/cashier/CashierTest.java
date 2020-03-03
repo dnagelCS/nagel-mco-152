@@ -1,7 +1,8 @@
 package nagel.cashier;
 
+import org.hamcrest.core.Is;
+import org.junit.Assert;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class CashierTest {
@@ -30,10 +31,12 @@ public class CashierTest {
         assertEquals(3, cashier.cashRegister.getOnesAmt());
     }
 
-    @Test
-    public void BrokeCashier() throws NotEnoughChangeException {
+    @Test(expected = NotEnoughChangeException.class)
+    public void brokeCashier() throws NotEnoughChangeException {
         //given
         Cashier cashier = new Cashier();
+        cashier.cashRegister.setPennyAmt(0);
+        cashier.cashRegister.setQuarterAmt(0);
 
         Cash customerPay = new Cash();
         customerPay.setOnesAmt(3);
@@ -42,12 +45,10 @@ public class CashierTest {
 
         //when
         change = cashier.pay(2.49, customerPay);
-
-        //then throw exception
     }
 
     @Test
-    public void NoExactChange() throws NotEnoughChangeException {
+    public void noExactChange() throws NotEnoughChangeException {
         //given
         Cashier cashier = new Cashier();
         cashier.cashRegister.setQuarterAmt(100);
@@ -60,6 +61,8 @@ public class CashierTest {
         //when
         change = cashier.pay(2.49, customerPay);
 
-        //then throw exception
+        //then
+        assertEquals(100, cashier.cashRegister.getQuarterAmt());
+        assertEquals(0, cashier.cashRegister.getOnesAmt());
     }
 }
