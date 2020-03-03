@@ -13,28 +13,28 @@ public class Cashier {
             moneyOwed = customerPay.totalCash() - price;
             moneyOwed = Math.round(moneyOwed * 100.0) / 100.0;
         }
-/*        //exact change
+        //exact change
         if(moneyOwed == 0) {
             addPayToRegister(customerPay);
-        }*/
+        }
         //broke cashier
         if (cashRegister.totalCash() == 0) {
             throw new NotEnoughChangeException();
         }
         else {
             try {
-                addPayToRegister(customerPay);
                 change = calculateChange(change, moneyOwed, cashRegister);
+                moneyOwed = updateMoneyOwed(change, moneyOwed);
                 if (moneyOwed != 0) {
                     throw new NotEnoughChangeException();
                 }
+                addPayToRegister(customerPay);
                 subChangeFromRegister(change);
-                return change;
             }
             catch (NotEnoughChangeException exc) {
-                returnCustomerPay(customerPay);
                 return cashRegister;
             }
+            return change;
         }
     }
 
@@ -96,14 +96,8 @@ public class Cashier {
         cashRegister.subTwenties(change.getTwentiesAmt());
     }
 
-    private void returnCustomerPay(Cash customerPay) {
-        cashRegister.subPennies(customerPay.getPennyAmt());
-        cashRegister.subNickels(customerPay.getNickelAmt());
-        cashRegister.subDimes(customerPay.getDimeAmt());
-        cashRegister.subQuarters(customerPay.getQuarterAmt());
-        cashRegister.subOnes(customerPay.getOnesAmt());
-        cashRegister.subFives(customerPay.getFivesAmt());
-        cashRegister.subTens(customerPay.getTensAmt());
-        cashRegister.subTwenties(customerPay.getTwentiesAmt());
+    private double updateMoneyOwed(Cash cash, double moneyOwed) {
+        moneyOwed -= cash.totalCash();
+        return moneyOwed;
     }
 }
