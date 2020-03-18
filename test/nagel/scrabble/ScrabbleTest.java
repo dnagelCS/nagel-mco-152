@@ -1,16 +1,21 @@
 package nagel.scrabble;
 
 import org.junit.Test;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import static org.junit.Assert.assertEquals;
 
 public class ScrabbleTest {
+    Scrabble scrabble = new Scrabble();
+
+    public ScrabbleTest() throws FileNotFoundException {
+    }
 
     @Test
     public void isWord() throws FileNotFoundException {
         //given
-        Scrabble scrabble = new Scrabble();
-        scrabble.readFile("src//nagel//scrabble//dictionary.txt");
+        scrabble = new Scrabble();
 
         //when
         boolean exist = scrabble.isWord("AH");
@@ -22,8 +27,7 @@ public class ScrabbleTest {
     @Test
     public void isNotWord() throws FileNotFoundException {
         //given
-        Scrabble scrabble = new Scrabble();
-        scrabble.readFile("src//nagel//scrabble//dictionary.txt");
+        scrabble = new Scrabble();
 
         //when
         boolean exist = scrabble.isWord("devora");
@@ -34,8 +38,7 @@ public class ScrabbleTest {
 
     @Test
     public void ignoreCase() throws FileNotFoundException {
-        Scrabble scrabble = new Scrabble();
-        scrabble.readFile("src//nagel//scrabble//dictionary.txt");
+        scrabble = new Scrabble();
 
         boolean exist = scrabble.isWord("ah");
         assertEquals(true, exist);

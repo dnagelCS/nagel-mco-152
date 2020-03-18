@@ -17,7 +17,7 @@ public class ProjectileMath {
         }
 
         for (Projectile projectile : list) {    //'for each' loop allows to go through all projectiles and add list to each
-           // System.out.println("Projectile: " + list.size());
+            //System.out.println("Projectile: " + list.size());
             for (double j = 0; j < 5; j++) {
                 System.out.println(projectile.toString());
                 projectile.increaseTime(1);     //increase time by 1 for each projectile
