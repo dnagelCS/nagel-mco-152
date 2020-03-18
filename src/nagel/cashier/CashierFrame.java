@@ -60,7 +60,7 @@ public class CashierFrame extends JFrame {
         error = new JLabel("Error");
 
         topPanel = new JPanel();
-        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
         //setContentPane(topPanel);
         topPanel.add(pennies);
         topPanel.add(nickels);
@@ -72,14 +72,14 @@ public class CashierFrame extends JFrame {
         topPanel.add(twenties);
 
         middlePanel = new JPanel();
-        middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
+        middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.X_AXIS));
         middlePanel.add(priceLabel);
         middlePanel.add(enterPrice);
         middlePanel.add(clear);
         middlePanel.add(pay);
 
         bottomPanel = new JPanel();
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
+        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
         bottomPanel.add(registerLabel);
         bottomPanel.add(register);
         bottomPanel.add(changeLabel);
@@ -89,9 +89,9 @@ public class CashierFrame extends JFrame {
             error.setBackground(Color.RED);
             bottomPanel.add(error);*/
 
-        add(topPanel);
-        add(middlePanel);
-        add(bottomPanel);
+        add(topPanel, BorderLayout.NORTH);
+        add(middlePanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
 
         pennies.addActionListener(actionEvent -> customerPay.addPennies(1));
         nickels.addActionListener(actionEvent -> customerPay.addNickels(1));
