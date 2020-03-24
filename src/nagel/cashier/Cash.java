@@ -160,4 +160,8 @@ public class Cash {
     public void subTwenties(int twentiesAmt) {
         this.twentiesAmt -= twentiesAmt;
     }
+
+    public double getTotalCash() {
+        return totalCash();
+    }
 }
