@@ -119,7 +119,7 @@ public class CashierFrame extends JFrame {
 
     private void fillRegister() {
         cashRegister.setQuarterAmt(100);
-        cashRegister.setPennyAmt(0);
+        cashRegister.setPennyAmt(100);
     }
 
     private void payCashier() {
