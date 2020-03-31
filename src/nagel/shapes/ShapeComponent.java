@@ -35,8 +35,8 @@ public class ShapeComponent extends JComponent {
         int centerY = height / 2;
         g.translate(centerX, centerY);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.rotate(Math.toRadians(rotation));
-        rotation++;
+        //g2d.rotate(Math.toRadians(rotation));
+        //rotation++;
 
         drawShape(g);
 
@@ -76,9 +76,12 @@ public class ShapeComponent extends JComponent {
 
     private void drawBat(Graphics g) {
         g.setColor(Color.black);
-        g.fillOval(-20,-35,30,60);
-        g.fillPolygon(new int[] {-10,20,60},new int[] {0,-30,0},3);   //right wing
-        g.fillPolygon(new int[] {-70,-30,0}, new int[] {0,-30,0},3);
+        g.fillOval(-17,-45,26,27);      //head
+        g.fillOval(-20,-30,30,45);      //body
+        g.fillPolygon(new int[] {-10,20,60},new int[] {0,-30,0},3);     //right wing
+        g.fillPolygon(new int[] {-70,-30,0}, new int[] {0,-30,0},3);    //left wing
+        g.fillPolygon(new int[] {2,12,7}, new int[] {-40,-45,-30},3);    //right ear
+        g.fillPolygon(new int[] {-15,-20,-10}, new int[] {-30,-45,-40},3);    //left ear
         //g.drawArc(-120,-10,85,95,0,80);
         //g.drawArc(-110, 15, 120, 60, 0, 90);
         //int[] x = {-120, -110, -100, -90, -70, -50, -20, 0, 0};
