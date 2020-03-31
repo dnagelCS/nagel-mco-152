@@ -35,8 +35,8 @@ public class ShapeComponent extends JComponent {
         int centerY = height / 2;
         g.translate(centerX, centerY);
         Graphics2D g2d = (Graphics2D) g;
-        //g2d.rotate(Math.toRadians(rotation));
-        //rotation++;
+        g2d.rotate(Math.toRadians(rotation));
+        rotation++;
 
         drawShape(g);
 
