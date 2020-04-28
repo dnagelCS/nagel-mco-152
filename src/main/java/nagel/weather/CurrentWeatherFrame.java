@@ -1,5 +1,6 @@
 package nagel.weather;
 
+import com.sun.org.apache.xerces.internal.impl.io.ASCIIReader;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -108,9 +109,9 @@ public class CurrentWeatherFrame extends JFrame {
                     cityLabel.setText("City:");
                     city.setText(currentWeather.name);
                     tempLabel.setText("Temperature:");
-                    temp.setText(currentWeather.main.temp + " °F");
+                    temp.setText(currentWeather.main.temp + " " + ((char)176) + "F");
                     feelsLikeLabel.setText("Feels Like:");
-                    feelsLike.setText(currentWeather.main.feels_like + " °F");
+                    feelsLike.setText(currentWeather.main.feels_like + " " + ((char)176) + "F");
                     descriptionLabel.setText("Description:");
                     description.setText(currentWeather.weather[0].description);
                 }
