@@ -1,11 +1,17 @@
 package nagel.weather;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 import javax.swing.*;
-import javax.xml.stream.Location;
 import java.awt.*;
-import java.net.URL;
 
 public class CurrentWeatherFrame extends JFrame {
+    Retrofit retrofit;
+
     private JLabel zipLabel;
     private JTextField zip;
     private JLabel error;
@@ -82,26 +88,40 @@ public class CurrentWeatherFrame extends JFrame {
         add(topPanel, BorderLayout.PAGE_START);
         add(midPanel, BorderLayout.CENTER);
         add(botPanel, BorderLayout.PAGE_END);
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.openweathermap.org/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
     private void getWeather() {
-        try {
-            GetCurrentWeather weatherData = new GetCurrentWeather();
-            URL url = new URL("https://api.openweathermap.org/data/2.5/weather?zip=" + zip.getText() + ",us&appid=ae64c1e0eb7deb372764616366d1105f&units=imperial");
-            CurrentWeather currentWeather = weatherData.getCurrentWeather(url);
-            error.setText("");
-            cityLabel.setText("City:");
-            city.setText(currentWeather.name);
-            tempLabel.setText("Temperature:");
-            temp.setText(currentWeather.main.temp + " °F");
-            feelsLikeLabel.setText("Feels Like:");
-            feelsLike.setText(currentWeather.main.feels_like + " °F");
-            descriptionLabel.setText("Description:");
-            description.setText(currentWeather.weather[0].description);
-        } catch (Exception exc) {
-            reset();
-            error.setText("Error occurred. Please try again.");
-        }
+            WeatherService service = retrofit.create(WeatherService.class);
+
+            service.getWeather(zip.getText() + ",us").enqueue(new Callback<CurrentWeather>() {
+
+                @Override
+                public void onResponse(Call<CurrentWeather> call, Response<CurrentWeather> response)
+                {
+                    CurrentWeather currentWeather = response.body();
+                    error.setText("");
+                    cityLabel.setText("City:");
+                    city.setText(currentWeather.name);
+                    tempLabel.setText("Temperature:");
+                    temp.setText(currentWeather.main.temp + " °F");
+                    feelsLikeLabel.setText("Feels Like:");
+                    feelsLike.setText(currentWeather.main.feels_like + " °F");
+                    descriptionLabel.setText("Description:");
+                    description.setText(currentWeather.weather[0].description);
+                }
+
+                @Override
+                public void onFailure(Call<CurrentWeather> call, Throwable t)
+                {
+                    reset();
+                    error.setText("Error occurred. Please try again.");
+                }
+            });
     }
 
     private void reset() {
@@ -120,6 +140,5 @@ public class CurrentWeatherFrame extends JFrame {
     public static void main(String[] args) {
         new nagel.weather.CurrentWeatherFrame().setVisible(true);
     }
-
 }
 
