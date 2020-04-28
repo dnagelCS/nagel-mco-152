@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface WeatherService {
-    @GET("http://api.openweathermap.org/data/2.5/weather?zip&appid=ae64c1e0eb7deb372764616366d1105f&units=imperial")
+    @GET("data/2.5/weather?appid=ae64c1e0eb7deb372764616366d1105f&units=imperial")
     Call<CurrentWeather> getWeather(@Query("zip") String zip);
 }
